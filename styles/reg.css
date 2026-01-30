@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0.25vh 2vw; 
+    background-color: #24273a; 
+    font-family: 'Roboto', sans-serif;
+}
+
+#header {
+    display: grid; 
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(5fr);
+}
+
+
+h1 { color: #f5a97f;}
