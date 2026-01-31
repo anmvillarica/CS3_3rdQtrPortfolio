@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta name="author" content="Arianna Nina M. Villarica">
@@ -17,7 +18,26 @@
     <div id="page">
         <div id="header">
             <h1 id="title">1an._.na</h1>
+            <div id="links">
+                <a href="" class="hover" style="background-color: #8aadf4;">Works</a>
+                <a href="" class="hover" style="background-color: #ed8796;">About Me</a>
+            </div>
             <p id="desc"><em>Inspired by Catppuccin Theme for VS Code</em></p>
+            <i style="font-size:2vw;" class="fa" id="menu_icon">&#xf0c9;</i>
+        </div>
+
+        <div id="hero_sctn">
+            <img href="" style="grid-area: 1 / 1;">
+            <p style="grid-area: 1 / 2;">Hello! I am <strong>Arianna Villarica</strong> from 9 - Potassium!</p>
+        </div>
+
+        <div id="footer">
+            <p>	&copy; Arianna Villarica <span id="year"></span></p>
+
+            <script>
+                // Auto-set current year 
+                document.getElementById('year').textContent = new Date().getFullYear(); 
+            </script>
         </div>
     </div>
 </body>
