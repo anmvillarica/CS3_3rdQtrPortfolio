@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>View SignUps (3G)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 1.5rem;
+            background-color: rgb(254, 255, 240);
+            color: rgb(75, 123, 228);
+        }
+
+        h1, h3 {
+            font-family: "Oswald", sans-serif;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 10px 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            padding: 10px; 
+            background-color: skyblue;
+        }
+
+        input:focus {
+            color: blue;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: auto; 
+        }
+
+        td, tr {
+            padding: 2vw; 
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../script/thirdgraded.js"></script>
+
+    <h1><a href="./Q3_3GPotassiumVillarica.html">SignUps</a> Directory!</h1>
+    <hr>
+
+    <h3>Club:</h3>
+    <select id="club" onchange="loadSignUps();">
+        <option value="0"></option>
+        <option value="SciScho">The Science Scholar</option>
+        <option value="Lagablab">Ang Lagablab</option>
+        <option value="Himig">Himig Agham</option>
+        <option value="Expo">Exposure</option>
+        <option value="XYZ">Pisay XYZ</option>
+        <option value="Alianteam">Alianti Varsity</option>
+    </select>
+    
+    <table id="table">
+        <tr>
+            <th>Club</th>
+            <th>ID</th>
+            <th>Fullname</th>
+            <th>Grade</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Intern|Extern</th>
+        </tr>
+    </table>
+
+    <script>
+        function loadSignUps() {
+        var data = JSON.parse(localStorage.getItem("save")) || []; 
+        var club = document.getElementById("club").value; 
+        var table = document.getElementById("table");
+        var none = 0; 
+
+        for (let i = 0; i < data.length; i++) {
+            if(data[i].Club == club){
+                var toadd = `<tr>
+                <td>${data[i].Club}</td>
+                <td>${data[i].Fullname}</td>
+                <td>${data[i].Grade}</td>
+                <td>${data[i].Email}</td>
+                <td>${data[i].Number}</td>
+                <td>${data[i].InternExtern}</td>
+                </tr>`;
+                table.innerHTML += toadd; 
+            }
+            else
+                none += 1;
+
+            if((i == data.length - 1) && (none == i + 1))
+            {
+                table.innerHTML = "<p>No Sign Ups for the club</p>";
+            }
+        }
+
+        if(data.length == 0) {
+            table.innerHTML = "<p>No Sign Ups for this club</p>";
+        }
+        }
+    </script>
+</body>
+
+</html>

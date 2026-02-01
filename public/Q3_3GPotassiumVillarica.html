@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Ianna's Q3 2nd GE</title>
+    <title>Ianna's Q3 3rd GE</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +27,7 @@
             gap: 10px 20px;
             justify-content: center;
             align-items: center;
+            margin-bottom: 5vh;
         }
 
         .button {
@@ -37,11 +38,18 @@
         input:focus {
             color: blue;
         }
+
+        #directory {
+            width: 80vw; 
+            padding: 5px 30vw; background-color: rgb(75, 123, 228);
+            color: rgb(254, 255, 240);
+            font-family: "Oswald", sans-serif;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
 <body>
-
     <h1>Student Information Survey!</h1>
     <h3>Please input all of the required information and don't forget
         to click the submit button
@@ -49,11 +57,12 @@
 
     <hr>
 
-    <form method="post" action="submit">
+    <form method="post" onsubmit="return save()">
         Student ID: <input type="number" id="StudentId" required>
         Full Name: <input type="text" id="FullName" onblur = "this.style.color = 'blue'"required>
         Birthday: <input type="date" id="Birthday" required> 
         Email address: <input type="email" id="EmailAddress" required>
+        Mobile Number: <input type="number" id="Number" required>
         Grade Level: <select id="GradeLevel" required>
             <option value="7">Grade 7</option>
             <option value="8">Grade 8</option>
@@ -74,10 +83,43 @@
             <option value="Alianteam">Alianti Varsity</option>
             </select> 
         Why do you want to join?: <textarea onblur = "this.style.color = 'blue'" id="Reason"></textarea>
-        <input class="button" type="submit" onclick="confirm('Submit responses?'); this.style.backgroundColor = 'rgb(75, 123, 228)'; this.style.color = 'rgb(254, 255, 240)';" >
-        <input class = "button" type="reset" onclick="confirm('Clear all previous data?'); this.style.backgroundColor = 'rgb(75, 123, 228)'; this.style.color = 'rgb(254, 255, 240)';">
+        <input id="submitbtn" class="button" type="submit">
+        <input id="resetbtn" class = "button" type="reset" onclick="confirm('Clear all previous data?'); this.style.backgroundColor = 'rgb(75, 123, 228)'; this.style.color = 'rgb(254, 255, 240)';">
     </form>
 
+    <a id="directory" href="viewSignUps.html">Directory!</a>
+
+    <script>
+    var submit = document.getElementById("submitbtn"); 
+
+    function save(){
+        if(confirm("Submit responses?") == true) {
+            submit.style.backgroundColor = 'rgb(75, 123, 228)'; 
+            submit.style.color = 'rgb(254, 255, 240)';
+        
+            var users = JSON.parse(localStorage.getItem("save")) || [];
+
+            var user_obj = {
+                ID: document.getElementById("StudentId").value,
+                Fullname: document.getElementById("FullName").value,
+                Birthday: document.getElementById("Birthday").value,
+                Email: document.getElementById("EmailAddress").value,
+                Number: document.getElementById("Number").value,
+                Grade: document.getElementById("GradeLevel").value,
+                InternExtern: document.getElementById("DormerStatus").value,
+                Club: document.getElementById("OrgClub").value,
+                Reason: document.getElementById("Reason").value
+            }
+
+            users.push(user_obj);
+
+            localStorage.setItem("save", JSON.stringify(users));
+
+            alert("You have signed up succesfully!"); 
+            return 0; 
+            }   
+    }
+    </script>
 </body>
 
 </html>
