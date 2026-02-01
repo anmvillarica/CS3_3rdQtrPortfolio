@@ -15,31 +15,59 @@
 </head>
 
 <body>
+    <div id="header">
+        <a href="index.html"><h1 id="title">1an._.na</h1></a>
+        <!-- <div id="links">
+            <a href="" class="hover" style="background-color: #8aadf4;">Works</a>
+            <a href="" class="hover" style="background-color: #ed8796;">About Me</a>
+        </div> !-->
+        <p id="desc"><em>Inspired by Catppuccin Theme for VS Code</em></p>
+        <button id="menu_icon"  onclick="document.getElementById(works_list).style.opacity=1;"><i style="font-size:2vw;" class="fa">&#xf0c9;</i></button>
+    </div>
+
     <div id="page">
-        <div id="header">
-            <h1 id="title">1an._.na</h1>
-            <div id="links">
-                <a href="" class="hover" style="background-color: #8aadf4;">Works</a>
-                <a href="" class="hover" style="background-color: #ed8796;">About Me</a>
-            </div>
-            <p id="desc"><em>Inspired by Catppuccin Theme for VS Code</em></p>
-            <i style="font-size:2vw;" class="fa" id="menu_icon">&#xf0c9;</i>
-        </div>
-
         <div id="hero_sctn">
-            <img href="" style="grid-area: 1 / 1;">
-            <p style="grid-area: 1 / 2;">Hello! I am <strong>Arianna Villarica</strong> from 9 - Potassium!</p>
-        </div>
-
-        <div id="footer">
-            <p>	&copy; Arianna Villarica <span id="year"></span></p>
-
-            <script>
-                // Auto-set current year 
-                document.getElementById('year').textContent = new Date().getFullYear(); 
-            </script>
+            <img src="./media/wada.png" style="grid-area: 1 / 1; width: auto; height: 40vh;">
+            <span style="grid-area: 1 / 2;" >
+                <h2>Hello! I am <strong>Arianna Villarica</strong> from 9 - Potassium!</h2>
+                <p>I'm 15 years old and I really enjoy Math and Statistics! <3</p>
+                <p>My hobbies are singing, reading books, drawing, crocheting, and playing the guitar!</p>
+                
+                <h3>Other Info!</h3>
+                <ul>
+                    <li><b>Clubs:</b> Sigasig, Himig Agham</li>
+                    <li><b>Favorite Song Genre:</b> OPM</li>
+                    <li><b>Favorite Color:</b> Light Blue 🩵</li>
+                    <li><b>Favorite Emojis:</b> 💖 😭 ☺️</li>
+                    <li><b>Favorite Animal:</b> Penguin</li>
+                </ul>
+            </span>
+            <span style="grid-area: 2 / 1; background-color: #1e2030; padding: 5px; border-radius: 5px;">
+                <h3>Contact Me!</h3>
+                <ul>
+                    <li><b>Discord:</b> 1an._.na</li>
+                    <li><b>Instagram:</b> iannapops</li>
+                    <li><b>Facebook:</b> Arianna Villarica</li>
+                    <li><b>Email:</b> b2029anmvillarica@pshs.edu.ph / arninavillarica@gmail.com</li>
+                </ul>
+            </span>
+            <img src="./media/me.jpg" style="grid-area: 2 / 2; width: auto; height: 40vh;">
         </div>
     </div>
+    <p id="footer">	&copy; Arianna Villarica <span id="year"></span></p>
+    <br>
+
+    <div id="works_list"">
+        <ul>
+            <li><a href="./public/Q3_2GPotassiumVillarica.html" class="hover" style="background-color: #8aadf4;">2G</a></li>
+
+        </ul>
+    </div>
+
+    <script>
+        // Auto-set current year 
+        document.getElementById('year').textContent = new Date().getFullYear(); 
+    </script>
 </body>
 
 </html>
