@@ -66,6 +66,7 @@
         <option value="Alianteam">Alianti Varsity</option>
     </select>
     
+    <p style="background-color: rgb(75, 123, 228); color:rgb(254, 255, 240);"><b>Total Number of Signups:</b><span id="no_of_su"></span></p>
     <table id="table">
         <tr>
             <th>Club</th>
@@ -80,31 +81,44 @@
 
     <script>
         function loadSignUps() {
-        var data = JSON.parse(localStorage.getItem("save")) || []; 
+        var data = JSON.parse(localStorage.getItem("save")); 
         var club = document.getElementById("club").value; 
         var table = document.getElementById("table");
-        var none = 0; 
+        
+        let counter = 0; 
 
         for (let i = 0; i < data.length; i++) {
+            let DormerStatus = "";
+
+            if (data[i].InternExtern == 1)
+            {
+                DormerStatus = "Intern";
+            }
+            else 
+                DormerStatus = "Extern";
+
             if(data[i].Club == club){
                 var toadd = `<tr>
                 <td>${data[i].Club}</td>
+                <td>${data[i].ID}</td>
                 <td>${data[i].Fullname}</td>
                 <td>${data[i].Grade}</td>
                 <td>${data[i].Email}</td>
                 <td>${data[i].Number}</td>
-                <td>${data[i].InternExtern}</td>
+                <td>${DormerStatus}</td>
                 </tr>`;
                 table.innerHTML += toadd; 
-            }
-            else
-                none += 1;
 
-            if((i == data.length - 1) && (none == i + 1))
-            {
-                table.innerHTML = "<p>No Sign Ups for the club</p>";
+                counter += 1; 
             }
         }
+
+        if(counter == 0)
+        {
+            table.innerHTML = "<p>No Sign Ups for the club</p>";
+        }
+
+        document.getElementById('no_of_su').innerHTML = `<p>${counter}</p>`;
 
         if(data.length == 0) {
             table.innerHTML = "<p>No Sign Ups for this club</p>";

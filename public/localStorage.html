@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<body onload="reload()">
+    <input type="text" id="inp">
+    <input class="button" type="submit" onclick="save()">
+
+    <script>
+    var input = document.getElementById('inp');
+    
+    function save(){
+        let data = input.value; 
+
+        localStorage.setItem('save', JSON.stringify(data));
+        alert("Data saved!");
+    }
+
+    function reload() {
+        alert("Reloading");
+        let save = localStorage.getItem('save');
+
+        input.value = save; 
+    }
+    </script>
+</body>

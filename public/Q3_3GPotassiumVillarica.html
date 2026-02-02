@@ -57,13 +57,13 @@
 
     <hr>
 
-    <form method="post" onsubmit="return save()">
-        Student ID: <input type="number" id="StudentId" required>
-        Full Name: <input type="text" id="FullName" onblur = "this.style.color = 'blue'"required>
-        Birthday: <input type="date" id="Birthday" required> 
-        Email address: <input type="email" id="EmailAddress" required>
-        Mobile Number: <input type="number" id="Number" required>
-        Grade Level: <select id="GradeLevel" required>
+    <form>
+        Student ID: <input type="number" id="student" required>
+        Full Name: <input type="text" id="name" onblur = "this.style.color = 'blue'"required>
+        Birthday: <input type="date" id="birthday" required> 
+        Email address: <input type="email" id="email" required>
+        Mobile Number: <input type="number" id="number" required>
+        Grade Level: <select id="grade" required>
             <option value="7">Grade 7</option>
             <option value="8">Grade 8</option>
             <option value="9">Grade 9</option>
@@ -71,10 +71,10 @@
             <option value="11">Grade 11</option>
             <option value="12">Grade 12</option>
         </select>
-        Intern: <input onblur = "this.style.color = 'blue'" type="radio" value="1" name="DormerStatus" required> 
+        Intern: <input onblur = "this.style.color = 'blue'" type="radio" value="1" name="DormerStatus" id="intern" required> 
         Extern:
         <input type="radio" value="0" name="DormerStatus">Extern</input>
-        Preferred Organization / Club: <select id="OrgClub" required>
+        Preferred Organization / Club: <select id="club" required>
             <option value="SciScho">The Science Scholar</option>
             <option value="Lagablab">Ang Lagablab</option>
             <option value="Himig">Himig Agham</option>
@@ -82,10 +82,10 @@
             <option value="XYZ">Pisay XYZ</option>
             <option value="Alianteam">Alianti Varsity</option>
             </select> 
-        Why do you want to join?: <textarea onblur = "this.style.color = 'blue'" id="Reason"></textarea>
-        <input id="submitbtn" class="button" type="submit">
-        <input id="resetbtn" class = "button" type="reset" onclick="confirm('Clear all previous data?'); this.style.backgroundColor = 'rgb(75, 123, 228)'; this.style.color = 'rgb(254, 255, 240)';">
+        Why do you want to join?: <textarea onblur = "this.style.color = 'blue'" id="reason"></textarea>
     </form>
+    <input id="submitbtn" class="button" type="submit" onclick="save()">
+    <input id="resetbtn" class = "button" type="reset" onclick="confirm('Clear all previous data?'); this.style.backgroundColor = 'rgb(75, 123, 228)'; this.style.color = 'rgb(254, 255, 240)';">
 
     <a id="directory" href="viewSignUps.html">Directory!</a>
 
@@ -94,29 +94,25 @@
 
     function save(){
         if(confirm("Submit responses?") == true) {
-            submit.style.backgroundColor = 'rgb(75, 123, 228)'; 
-            submit.style.color = 'rgb(254, 255, 240)';
-        
-            var users = JSON.parse(localStorage.getItem("save")) || [];
+            let users = JSON.parse(localStorage.getItem("save")) || []; 
 
-            var user_obj = {
-                ID: document.getElementById("StudentId").value,
-                Fullname: document.getElementById("FullName").value,
-                Birthday: document.getElementById("Birthday").value,
-                Email: document.getElementById("EmailAddress").value,
-                Number: document.getElementById("Number").value,
-                Grade: document.getElementById("GradeLevel").value,
-                InternExtern: document.getElementById("DormerStatus").value,
-                Club: document.getElementById("OrgClub").value,
-                Reason: document.getElementById("Reason").value
+            let user_obj = {
+                ID: document.getElementById("student").value,
+                Fullname: document.getElementById("name").value,
+                Birthday: document.getElementById("birthday").value,
+                Email: document.getElementById("email").value,
+                Number: document.getElementById("number").value,
+                Grade: document.getElementById("grade").value,
+                InternExtern: document.getElementById("intern").value || 0,
+                Club: document.getElementById("club").value,
+                Reason: document.getElementById("reason").value
             }
 
             users.push(user_obj);
 
-            localStorage.setItem("save", JSON.stringify(users));
+            localStorage.setItem('save', JSON.stringify(users));
 
             alert("You have signed up succesfully!"); 
-            return 0; 
             }   
     }
     </script>
